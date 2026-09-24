@@ -159,9 +159,9 @@ def get_progress_summary() -> str:
 
 # ===== 五步：拍辨拆分推 =====
 ERROR_TYPES = ["概念不清", "審題錯誤", "計算失誤", "思路缺失", "記憶混淆", "粗心"]
-SUBJECTS = ["國文", "英文", "數學", "物理", "化學", "資訊", "歷史", "地理"]
+SUBJECTS = ["國文", "英文", "數學", "物理", "化學", "生物", "地科", "資訊", "歷史", "地理"]
 
-CLASSIFY_PROMPT = """你是跨科錯題分類器。先判斷學科（國文/英文/數學/物理/化學/資訊/歷史/地理），
+CLASSIFY_PROMPT = """你是跨科錯題分類器。先判斷學科（國文/英文/數學/物理/化學/生物/地科/資訊/歷史/地理），
 再判斷單元與知識點，只回 JSON：
 {"subject":學科,"unit":單元,"knowledge_point":知識點,
 "question_type":選擇/填充/計算/問答,"difficulty":1-5整數,
@@ -243,6 +243,18 @@ def llm_classify(text: str, user_answer: str = "") -> dict:
 def _mock_classify(text: str, user_answer: str = "") -> dict:
     """無 Key 離線演示用：關鍵字判科，證明可跨多科。"""
     t = (text + user_answer)
+    if any(k in t for k in ["多項式", "f(x)=", "a,b,c為實數"]):
+        return {"subject": "數學", "unit": "多項式", "knowledge_point": "代入特定值求係數比大小",
+                "question_type": "選擇", "difficulty": 4, "correct_answer": "a>c>b",
+                "reason": "未想到代x=1,3,4求abc", "error_type": "思路缺失", "confidence": 0.55}
+    if any(k in t for k in ["抗生素", "抗藥性", "細菌"]):
+        return {"subject": "生物", "unit": "演化", "knowledge_point": "天擇與抗藥性實驗設計",
+                "question_type": "選擇", "difficulty": 3, "correct_answer": "(A)劑量遞增",
+                "reason": "遞增劑量篩選抗藥菌", "error_type": "概念不清", "confidence": 0.55}
+    if any(k in t for k in ["206Pb", "207Pb", "鉛", "岩心", "圖15"]):
+        return {"subject": "地科", "unit": "環境變遷", "knowledge_point": "圖表判讀與污染趨勢",
+                "question_type": "選擇", "difficulty": 4, "correct_answer": "",
+                "reason": "需對照圖15判讀比值趨勢", "error_type": "概念不清", "confidence": 0.5}
     if any(k in t for k in ["矩陣", "反矩陣", "A[", "a+b+c"]):
         return {"subject": "數學", "unit": "矩陣", "knowledge_point": "反方陣求矩陣與乘法",
                 "question_type": "選擇", "difficulty": 4, "correct_answer": "5",
@@ -335,3 +347,24 @@ def get_mistake_stats() -> str:
     per_subj = Counter(m.get('subject', '?') for m in ms)
     return (f"未掌握 {len(ms)} 題；分科：" + "、".join(f"{k}({v})" for k, v in per_subj.items())
             + "；弱點：" + "、".join(f"{k}({v})" for k, v in top))
+
+
+def list_mistakes(only_unmastered: bool = False) -> list:
+    """給 Streamlit 用：回傳 mistakes 列表（新到舊）。"""
+    db = _load()
+    ms = db.get("mistakes", [])
+    if only_unmastered:
+        ms = [m for m in ms if not m.get("mastered")]
+    return list(reversed(ms))
+
+
+def set_mastered(index_from_new: int, mastered: bool = True) -> str:
+    """給 Streamlit 用：按新到舊序號標記掌握。"""
+    db = _load()
+    ms = db.get("mistakes", [])
+    i = len(ms) - 1 - int(index_from_new)
+    if 0 <= i < len(ms):
+        ms[i]["mastered"] = bool(mastered)
+        _save(db)
+        return f"第 {index_from_new + 1} 題已標為{'掌握' if mastered else '未掌握'}。"
+    return "序號超出範圍。"

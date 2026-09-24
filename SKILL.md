@@ -8,9 +8,10 @@ description: 錯題拍照自動分類。手機拍照或截圖經拍辨拆分推�
 ## What I do
 
 - 手機拍照 / 截圖 → OCR → 結構化 → 雙維度分類 → 入庫 → 弱點統計
-- 跨科：國文 / 英文 / 數學 / 物理 / 化學 / 資訊 / 歷史 / 地理
+- 跨科：國文 / 英文 / 數學 / 物理 / 化學 / 生物 / 地科 / 資訊 / 歷史 / 地理
 - 雙維度：`學科-單元-知識點` ＋ `錯因六類（概念不清/審題錯誤/計算失誤/思路缺失/記憶混淆/粗心）`
 - 圖片永久存檔：`mistakes_images/已分類/<科別>-<單元>/`
+- 網頁：`app.py`（Streamlit，多檔上傳＋錯題本＋掌握切換）
 
 ## When to use me
 
@@ -30,7 +31,19 @@ description: 錯題拍照自動分類。手機拍照或截圖經拍辨拆分推�
 - `add_mistake_from_image(image_path, user_answer="", task_id="")` — 拍照一鍵入庫
 - `add_mistake_from_text(text, user_answer="", task_id="")` — 截圖文字直送
 - `get_mistake_stats()` — 未掌握題數＋分科＋弱點
+- `list_mistakes(only_unmastered=False)` / `set_mastered(i, mastered)` — 網頁錯題本用
 - `generate_plan / log_progress / get_next_task / get_progress_summary` — 學習教練原有工具
+
+## Web（app.py）
+
+```bash
+pip install -r requirements.txt
+python3 -m streamlit run app.py
+```
+
+三頁：拍照上傳（相機單張＋截圖多選批量分類）／文字直送／錯題本（看圖＋標掌握）。
+手機走同一 Wi-Fi 的 Network URL。注意：無 API Key 時上傳只會入 mock 分類，
+正式用需設 `MODEL_API_KEY` 或 `OPENAI_API_KEY`。
 
 ## Setup
 
