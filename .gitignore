@@ -1,0 +1,11 @@
+# 學生隱私：照片與個人記憶不進版控
+mistakes_images/*
+!mistakes_images/.gitkeep
+user_memory.json
+*.png
+*.jpg
+*.jpeg
+*.pdf
+__pycache__/
+*.pyc
+.env
