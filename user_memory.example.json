@@ -1,0 +1,23 @@
+{
+  "profile": {},
+  "progress": [],
+  "mistakes": [
+    {
+      "date": "2026-09-24",
+      "task_id": "",
+      "image": "mistakes_images/已分類/數學-矩陣/20260924_數學_001.jpg",
+      "question": "設A為3x2階矩陣…求a+b+c",
+      "user_answer": "0",
+      "correct_answer": "5",
+      "subject": "數學",
+      "unit": "矩陣",
+      "knowledge_point": "反方陣求矩陣與乘法",
+      "question_type": "選擇",
+      "reason": "矩陣乘法第一列加錯",
+      "error_type": "計算失誤",
+      "confidence": 0.55,
+      "review_date": "2026-09-24",
+      "mastered": false
+    }
+  ]
+}
