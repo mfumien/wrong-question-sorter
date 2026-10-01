@@ -1,0 +1,2 @@
+學生上傳連結：https://forms.gle/vhK4JuW7WcL4ZRxP6
+老師收件：開此表單 → 回應 → 在試算表中開啟 → 下載錯題照片連結欄的圖片到 ../02_辨_python圖轉文/input_images/ 再跑辨識

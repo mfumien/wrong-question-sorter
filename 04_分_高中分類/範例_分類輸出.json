@@ -1,0 +1,66 @@
+[
+  {
+    "q_id": "312001_數學_20251001",
+    "stem": "二次函數 f(x)=x^2+6x+5\n求頂點坐標為何？\n學生作答：B正解：A",
+    "stem_fixed": "二次函數 f(x)=x^2+6x+5\n求頂點坐標為何？\nA. (-3,-4) B. (3,4)\nC. (-3,4) D. (0,5)\n學生作答：B正解：A",
+    "options": [
+      "A. (-3,-4)",
+      "B. (3,4)",
+      "C. (-3,4)",
+      "D. (0,5)"
+    ],
+    "student_answer": "B",
+    "correct_answer": "A",
+    "key_steps": [
+      "配方：x^2+6x+5=(x+3)^2-4",
+      "頂點(-3,-4)對應A選項",
+      "學生誤選B(3,4)符號相反"
+    ],
+    "error_point": "配方時常數項-4算錯/頂點x坐標符號弄反",
+    "is_multi": false,
+    "ocr_confidence": 0.857,
+    "subject": "數學",
+    "unit": "B函數圖形",
+    "knowledge": "二次函數配方求頂點",
+    "error_type": "計算失誤",
+    "difficulty": "中",
+    "reason": "關鍵字命中 B函數圖形/二次函數配方求頂點；錯因依error_point判",
+    "review_dates": [
+      "+1天",
+      "+3天",
+      "+7天"
+    ]
+  },
+  {
+    "q_id": "312002_英文_20251001",
+    "stem": "___ finished his homework,\nTom went out to play.\n學生作答：D正解：A",
+    "stem_fixed": "___ finished his homework,\nTom went out to play.\nA. Having B. Have\nC. Has D. Had\n學生作答：D正解：A",
+    "options": [
+      "A. Having",
+      "B. Have",
+      "C. Has",
+      "D. Had"
+    ],
+    "student_answer": "D",
+    "correct_answer": "A",
+    "key_steps": [
+      "逗號後主詞Tom與分詞主詞須一致",
+      "分詞表完成用Having finished",
+      "D(Had)為完整子句不可與逗號連接"
+    ],
+    "error_point": "誤把分詞構句當成一般過去式選Had",
+    "is_multi": false,
+    "ocr_confidence": 0.871,
+    "subject": "英文",
+    "unit": "B文法句型",
+    "knowledge": "分詞構句",
+    "error_type": "概念不清",
+    "difficulty": "中",
+    "reason": "關鍵字命中 B文法句型/分詞構句；錯因依error_point判",
+    "review_dates": [
+      "+1天",
+      "+3天",
+      "+7天"
+    ]
+  }
+]

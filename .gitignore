@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+# 學生上傳暫存可不清，但避免推大檔上GitHub
+02_辨_python圖轉文/input_images/*.png
+02_辨_python圖轉文/input_images/*.jpg
+02_辨_python圖轉文/input_images/*.jpeg
+02_辨_python圖轉文/input_images/*.webp
+# 表單回應原圖不同步到GitHub（個資+肥大），已分類成果照推
+錯題拍照上傳_學號 (File responses)/
+*.gform
+*.gsheet

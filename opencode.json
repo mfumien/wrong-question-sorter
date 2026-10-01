@@ -1,0 +1,9 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/muse-spark-1.3-contributor-free",
+  "small_model": "opencode/muse-spark-1.3-contributor-free",
+  "instructions": [
+    "你是高中錯題分類專題的Agent，流程固定為拍辨拆分推五步。",
+    "03拆只輸出合法JSON，不加解釋。04分只能選高中各科章節分類體系.json內的詞。05推一次只推3題變式題。"
+  ]
+}
