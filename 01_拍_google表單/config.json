@@ -1,0 +1,7 @@
+{
+  "_說明": "每人複製一份改成 config.json 即可，skill 腳本只讀 config.json",
+  "form_url": "https://forms.gle/vhK4JuW7WcL4ZRxP6",
+  "form_response_dir": "錯題拍照上傳_學號 (File responses)/錯題照片 (File responses)",
+  "subjects": ["國文", "英文", "數學", "物理", "化學", "生物", "地科", "歷史", "地理", "公民"],
+  "poll_seconds": 30
+}

@@ -10,14 +10,25 @@
 
 之後學生一送表單，30秒內自動進 已分類/未分類
 """
-import time, shutil, subprocess, sys
+import time, shutil, subprocess, sys, json
 from pathlib import Path
 
 BASE = Path(__file__).parent.parent
-# TODO: 已指向真實表單回應夾，裝Drive桌面版即自動同步
-SOURCE_DIR = BASE / "錯題拍照上傳_學號 (File responses)" / "錯題照片 (File responses)"
+
+def load_config():
+    cfg_path = Path(__file__).parent / "config.json"
+    example = Path(__file__).parent / "config.example.json"
+    if not cfg_path.exists():
+        # 第一次用：從範例複製一份，使用者只改這一檔
+        shutil.copy2(example, cfg_path)
+        print(f"已產生 {cfg_path}，請改 form_url / form_response_dir 後重跑")
+    return json.loads(cfg_path.read_text(encoding="utf-8"))
+
+CFG = load_config()
+# 每人不同的東西只在 config.json 改，這裡自動讀
+SOURCE_DIR = BASE / CFG.get("form_response_dir", "")
 DEST_DIR = BASE / "02_辨_python圖轉文" / "input_images"
-POLL = 30
+POLL = int(CFG.get("poll_seconds", 30))
 
 def run_pipeline():
     # 依序跑辨→拆→分→整理，有裝 rapidocr 即可
