@@ -13,13 +13,15 @@ description: >
 
 個人版錯題管線：進已分類/未分類即刪上傳區，不查誰交。
 
-## 1. 拍：收件
+## 1. 拍：收件（每人不同，只改設定）
 
-- Google表單規格見 `01_拍_google表單/表單欄位定義.csv`，設定步驟見
-  `01_拍_google表單/Google表單設定步驟.md`
-- 表單回應檔會同步到 `錯題拍照上傳_學號 (File responses)/錯題照片 (File responses)/`
-- `01_拍_google表單/auto_import.py` 的 `SOURCE_DIR` 已指向該夾，
-  跑它即每30秒自動搬新圖到 `02_辨_python圖轉文/input_images/`
+- 每人先照 `01_拍_google表單/Google表單設定步驟.md` 建自己的表單
+  （欄位規格見 `01_拍_google表單/表單欄位定義.csv`）
+- 然後複製 `01_拍_google表單/config.example.json` 為 `config.json`，
+  只改 `form_url` / `form_response_dir` / `subjects` 三項
+- `01_拍_google表單/auto_import.py` 會自動讀 `config.json`，
+  每 N 秒把該表單回應夾的新圖搬到 `02_辨_python圖轉文/input_images/`
+- 辨拆分推的腳本、Prompt、分類體系全部共用，不用每人重寫
 
 ## 2. 辨：圖轉文
 
