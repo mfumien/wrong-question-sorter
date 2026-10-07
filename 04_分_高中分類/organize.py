@@ -51,8 +51,12 @@ def main():
         need_retake = o.get("need_retake", False)
 
         reason = ""
-        if need_retake or conf < 0.55 or chars < 10:
-            reason = f"OCR信心{conf}或字數{chars}不足；{o.get('retake_reason','請重拍')}"
+        unclassified_subject = c.get("subject", "") in ("待確認", "未定", "")
+        if need_retake or conf < 0.55 or chars < 10 or unclassified_subject:
+            if unclassified_subject:
+                reason = "查無科目關鍵字，待muse-spark/人工複判（絕不硬猜數學）"
+            else:
+                reason = f"OCR信心{conf}或字數{chars}不足；{o.get('retake_reason','請重拍')}"
             dest = TODO / (img.name if img else qid)
             if img:
                 shutil.copy2(img, dest)
