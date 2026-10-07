@@ -24,20 +24,24 @@ def safe(s: str) -> str:
 def main():
     ocr = {d["image_file"]: d for d in json.loads(OCR.read_text(encoding="utf-8"))}
     cls = json.loads(CLS.read_text(encoding="utf-8"))
-    # 清空重建(保留說明.md，只清圖片)
+    # 增量整理：保留既有已分類/未分類，只新增本批（重跑不洗掉歷史）
     for d in [DONE, TODO]:
         d.mkdir(parents=True, exist_ok=True)
-        for p in d.rglob("*"):
-            if p.is_file() and p.suffix.lower() not in (".md",):
-                p.unlink()
 
-    rows = []
+    # 載入舊總表，用 q_id 合併（新結果覆蓋同 q_id）
+    total_csv = BASE / "分類結果總表.csv"
+    merged = {}
+    if total_csv.exists():
+        import csv as _csv
+        with open(total_csv, encoding="utf-8-sig") as f:
+            for r in _csv.DictReader(f):
+                merged[r["q_id"]] = r
     for c in cls:
         # q_id是檔名去副檔名，需還原出原檔名
         qid = c["q_id"]
-        # 找出對應圖片 (支援中文空格檔名)
-        candidates = list(SRC_DIR.glob(qid + ".*"))
-        if not candidates:
+        # 找出對應圖片 (支援中文空格檔名；上傳區已刪則沿用舊列)
+        candidates = list(SRC_DIR.glob(qid + ".*")) if SRC_DIR.exists() else []
+        if not candidates and SRC_DIR.exists():
             # fallback：用stem比對
             candidates = [p for p in SRC_DIR.iterdir() if p.stem == qid]
         img = candidates[0] if candidates else None
@@ -63,16 +67,20 @@ def main():
             status = "已分類"
             reason = f"{subj}/{unit}/{c.get('knowledge','')}"
 
-        rows.append({
+        new_row = {
             "q_id": qid, "image_file": img.name if img else "",
             "狀態": status, "科目": c.get("subject", ""),
             "單元": c.get("unit", ""), "知識點": c.get("knowledge", ""),
             "信心": conf, "原因/路徑": reason if status == "未分類" else f"已分類/{c.get('subject','')}/{c.get('unit','')}/"
-        })
+        }
+        # 上傳區已刪導致找不到圖時，沿用舊列檔名
+        if not new_row["image_file"] and qid in merged and merged[qid].get("image_file"):
+            new_row["image_file"] = merged[qid]["image_file"]
+        merged[qid] = new_row
 
     # 個人版：進夾即刪上傳區 (input_images + File responses + 收件匣)
     cleaned = []
-    for r in rows:
+    for qid, r in merged.items():
         name = r["image_file"]
         if not name:
             continue
@@ -82,14 +90,14 @@ def main():
                 p.unlink()
                 cleaned.append(f"{zone.name}/{name}")
 
-    # 總表
-    total_csv = BASE / "分類結果總表.csv"
+    # 總表（累計）
+    rows = list(merged.values())
     with open(total_csv, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=["q_id", "image_file", "狀態", "科目", "單元", "知識點", "信心", "原因/路徑"])
         w.writeheader()
         w.writerows(rows)
 
-    print(f"已分類 {sum(1 for r in rows if r['狀態']=='已分類')} / 未分類 {sum(1 for r in rows if r['狀態']=='未分類')}")
+    print(f"本批 {len(cls)} 筆，累計已分類 {sum(1 for r in rows if r['狀態']=='已分類')} / 未分類 {sum(1 for r in rows if r['狀態']=='未分類')}")
     for r in rows:
         print(f"- {r['image_file']} [{r['狀態']}] {r['科目']}/{r['單元']}/{r['知識點']} conf={r['信心']}")
     print(f"總表 → {total_csv}")

@@ -18,3 +18,5 @@ mistakes_images/待分類/*
 user_memory.json
 *.pdf
 .env
+*.log
+*.err

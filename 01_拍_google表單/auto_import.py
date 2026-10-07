@@ -30,6 +30,15 @@ SOURCE_DIR = BASE / CFG.get("form_response_dir", "")
 DEST_DIR = BASE / "02_辨_python圖轉文" / "input_images"
 POLL = int(CFG.get("poll_seconds", 30))
 
+def safe_copy(src: Path, dst: Path):
+    """Drive File Provider擋clonefile系統複製，改用讀寫位元組搬運"""
+    with open(src, "rb") as f:
+        data = f.read()
+    if not data:
+        raise OSError("來源0B，同步中")
+    with open(dst, "wb") as f:
+        f.write(data)
+
 def run_pipeline():
     # 依序跑辨→拆→分→整理，有裝 rapidocr 即可
     cmds = [
@@ -50,16 +59,38 @@ def main():
     print(f"學生表單：https://forms.gle/vhK4JuW7WcL4ZRxP6")
     seen = {p.name for p in DEST_DIR.iterdir() if p.is_file()}
     while True:
+        # Drive 有時會收掉空資料夾，每輪都確保存在
+        SOURCE_DIR.mkdir(parents=True, exist_ok=True)
+        DEST_DIR.mkdir(parents=True, exist_ok=True)
         new = []
         if SOURCE_DIR.exists():
             for p in SOURCE_DIR.iterdir():
                 if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp") and p.name not in seen:
-                    shutil.copy2(p, DEST_DIR / p.name)
+                    if p.stat().st_size == 0:
+                        # Drive佔位檔還沒同步完，下一輪重試
+                        print(f"略過0B同步中檔案 {p.name}，下輪重試")
+                        continue
+                    try:
+                        safe_copy(p, DEST_DIR / p.name)
+                    except (FileNotFoundError, OSError) as e:
+                        # Drive同步中佔位檔會複製失敗，下一輪重試，不記seen
+                        print(f"略過同步中檔案 {p.name}，下輪重試：{e}")
+                        if (DEST_DIR / p.name).exists() and (DEST_DIR / p.name).stat().st_size == 0:
+                            (DEST_DIR / p.name).unlink()
+                        continue
+                    if (DEST_DIR / p.name).stat().st_size == 0:
+                        # 複到0B殘檔就刪掉重來
+                        (DEST_DIR / p.name).unlink()
+                        print(f"複到0B殘檔已刪，下輪重試 {p.name}")
+                        continue
                     seen.add(p.name)
                     new.append(p.name)
         if new:
             print(f"發現 {len(new)} 張新圖：{new}，跑分類...")
-            run_pipeline()
+            try:
+                run_pipeline()
+            except Exception as e:
+                print(f"管線出錯，下輪重試：{e}")
         time.sleep(POLL)
 
 if __name__ == "__main__":

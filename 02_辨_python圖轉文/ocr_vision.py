@@ -98,7 +98,23 @@ def main():
         print("已產生空範本 output_ocr.json 供03測試。");
         out_path.write_text(json.dumps([], ensure_ascii=False, indent=2), encoding="utf-8")
         return
-    results = [process_one(p) for p in imgs]
+    results = []
+    for p in imgs:
+        try:
+            results.append(process_one(p))
+        except Exception as e:
+            # 單張壞檔（如Drive 0B佔位）不中斷整批，標未分類處理
+            print(f"跳過壞檔 {p.name}：{e}")
+            results.append({
+                "image_file": p.name,
+                "question_text_raw": "",
+                "stem_guess": "",
+                "options_guess": [],
+                "char_count": 0,
+                "confidence": 0.0,
+                "need_retake": True,
+                "retake_reason": f"檔案損壞或同步中，請確認原圖可開啟（{e}）"
+            })
     out_path.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"完成 {len(results)} 張 → {out_path}")
     for r in results:
