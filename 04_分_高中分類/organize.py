@@ -5,8 +5,10 @@
 - 個人版規則：只要進已分類/未分類，就刪除上傳區原圖 (input_images + File responses + 收件匣)
   老師不查誰交，試算表連結會破是預期的
 - 用法：python3 organize.py
+  （預設只清 input_images 暫存，保留雲端硬碟同步的 File responses 原圖；
+   要連原圖一起刪加 --clean-upload）
 """
-import json, csv, shutil
+import json, csv, shutil, argparse
 from pathlib import Path
 
 BASE = Path(__file__).parent.parent
@@ -15,13 +17,32 @@ CLS = BASE / "04_分_高中分類" / "學測截圖_分類輸出.json"
 SRC_DIR = BASE / "02_辨_python圖轉文" / "input_images"
 DONE = BASE / "已分類"
 TODO = BASE / "未分類"
-RESP = BASE / "錯題拍照上傳_學號 (File responses)" / "錯題照片 (File responses)"
 INBOX = BASE / "01_拍_google表單" / "收件匣_自動同步"
+
+
+def load_cfg() -> dict:
+    """上傳區位置跟 auto_import.py 一樣讀 01_拍_google表單/config.json，
+    每人的表單資料夾名不同，不寫死。"""
+    p = BASE / "01_拍_google表單" / "config.json"
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+# 上傳區（File responses）路徑來自 config.json 的 form_response_dir
+RESP = BASE / load_cfg().get("form_response_dir", "")
 
 def safe(s: str) -> str:
     return s.replace("/", "_").replace("\\", "_").strip()
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--clean-upload", action="store_true",
+                    help="連同 File responses 原圖與收件匣一併刪除（預設只清 input_images 暫存）")
+    args = ap.parse_args()
     ocr = {d["image_file"]: d for d in json.loads(OCR.read_text(encoding="utf-8"))}
     cls = json.loads(CLS.read_text(encoding="utf-8"))
     # 增量整理：保留既有已分類/未分類，只新增本批（重跑不洗掉歷史）
@@ -83,12 +104,14 @@ def main():
         merged[qid] = new_row
 
     # 個人版：進夾即刪上傳區 (input_images + File responses + 收件匣)
+    # 預設只清 input_images 暫存；File responses 是雲端硬碟同步原圖，要加 --clean-upload 才刪
     cleaned = []
+    zones = [SRC_DIR, RESP, INBOX] if args.clean_upload else [SRC_DIR]
     for qid, r in merged.items():
         name = r["image_file"]
         if not name:
             continue
-        for zone in [SRC_DIR, RESP, INBOX]:
+        for zone in zones:
             p = zone / name
             if p.exists():
                 p.unlink()
