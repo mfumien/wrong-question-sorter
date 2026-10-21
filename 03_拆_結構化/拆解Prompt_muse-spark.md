@@ -1,9 +1,9 @@
-# 03_拆：muse-spark-1.3 結構化拆解 Prompt (直接貼進 opencode)
+# 03_拆：結構化拆解 Prompt (直接貼進 opencode)
 
 ## 使用方式
 
 1. 先跑 `python3 split.py` 產生初步切分
-2. 把 `output_ocr.json` 某題的 `question_text_raw` 貼到下方 `【待拆原文】` 處，整段貼進 opencode (模型已設為 muse-spark-1.3)
+2. 把 `output_ocr.json` 某題的 `question_text_raw` 貼到下方 `【待拆原文】` 處，整段貼進 opencode (模型已設為 opencode/glm-5.3-flash-free，見根目錄 opencode.json)
 3. 把回傳的JSON存成 `範例_拆解輸出.json` 格式，丟給04分類
 
 ---

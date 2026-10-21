@@ -1,4 +1,4 @@
-# 04_分：muse-spark-1.3 自動分類 Prompt
+# 04_分：自動分類 Prompt (模型 opencode/glm-5.3-flash-free，見根目錄 opencode.json)
 
 把 `03拆解輸出` 某一筆 + 下方體系貼進 opencode，一次分一題。
 

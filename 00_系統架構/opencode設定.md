@@ -1,14 +1,14 @@
-# 00 系統架構 + opencode muse-spark-1.3 設定
+# 00 系統架構 + opencode 內建模型設定
 
 ## 1. 為什麼這樣切五步
 
-* 拍：解決收件標準化，不然照片歪七扭八後面全錯
+* 拍：解決收件標準化，不然照片歪七扭七後面全錯
 * 辨：只做圖→文，不做理解，方便換OCR引擎
 * 拆：把一圖多題、多餘閒聊切乾淨，分類才會準
 * 分：只打標籤，不出題，避免一次做太多出錯
 * 推：只做檢索+排程+變式題，形成複習閉環
 
-## 2. opencode 內建 muse-spark-1.3 設定步驟
+## 2. opencode 內建模型設定步驟
 
 本專題LLM統一用 opencode內建，不需另外買Key。
 
@@ -16,13 +16,20 @@
 2. 在本資料夾根目錄放 `opencode.json` (已附)，內容指定：
 ```json
 {
-  "model": "opencode/muse-spark-1.3-contributor-free",
-  "provider": "opencode"
+  "model": "opencode/glm-5.3-flash-free",
+  "small_model": "opencode/glm-5.3-flash-free",
+  "instructions": ["AGENTS.md"]
 }
 ```
+   專題的三條硬規則寫在 `AGENTS.md`（opencode 的 `instructions` 只吃檔案路徑／網址，
+   不能直接塞句子）。
 3. 在本資料夾執行 `opencode` 進入交談
-4. 選模型：輸入 `/models` → 選 `muse-spark-1.3`
+4. 選模型：輸入 `/models` → 選 `glm-5.3-flash-free`（或直接用 opencode.json 的預設）
 5. 驗證：貼上 `03_拆_結構化/拆解Prompt_muse-spark.md` 內的測試題，應回傳合法JSON
 6. 學生實作時：02辨用python跑完，把 `output_ocr.json` 的文字貼給opencode，依03/04/05的Prompt逐步執行，不要一次全丟
 
-> 教學提示：muse-spark-1.3 看中文數學式表現穩定，但看圖片較弱，所以02堅持用python本機OCR先轉文字，再餵給spark做理解，這就是0_2的用意。
+> 教學提示：內建模型看中文數學式表現穩定，但看圖片較弱，所以02堅持用python本機OCR先轉文字，再餵給LLM做理解，這就是0_2的用意。
+>
+> 註：原始 repo 釘的 `opencode/muse-spark-1.3-contributor-free` 已下架，改用 `opencode/glm-5.3-flash-free`。
+> 各 Prompt 檔名沿用 `*_muse-spark.md` 只是沿用原命名，內容與模型無關。
+

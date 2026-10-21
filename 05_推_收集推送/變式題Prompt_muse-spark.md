@@ -1,4 +1,4 @@
-# 05_推：變式題 Prompt (muse-spark-1.3，一題一變式)
+# 05_推：變式題 Prompt (一題一變式；模型見根目錄 opencode.json)
 
 ```text
 你是高中出題老師(muse-spark)。依【同知識點+同錯因】出一題變式題。
