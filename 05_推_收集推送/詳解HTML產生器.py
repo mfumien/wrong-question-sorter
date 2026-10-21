@@ -209,7 +209,7 @@ def render(rec: dict) -> str:
 
   <div class="card">
     <div class="lab">正解</div>
-    <div class="ans">{esc(rec.get("answer",""))}</div>
+    {'<div class="ans">（待補詳解）</div>' if not str(rec.get('answer','')).strip() else f'<div class="ans">{esc(rec.get("answer",""))}</div>'}
   </div>
 
   <div class="card">

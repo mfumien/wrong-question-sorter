@@ -39,7 +39,7 @@ def safe_copy(src: Path, dst: Path):
     with open(dst, "wb") as f:
         f.write(data)
 
-def run_pipeline():
+def run_pipeline(with_detail=True):
     # 依序跑辨→拆→分→整理，有裝 rapidocr 即可
     cmds = [
         [sys.executable, "../02_辨_python圖轉文/ocr_vision.py"],
@@ -51,6 +51,13 @@ def run_pipeline():
     ]
     for c in cmds:
         subprocess.run(c, cwd=Path(__file__).parent)
+    # 分類完接著自動觸發詳解：呼叫 LLM 為新題寫詳解，並接進四層錯題本網頁
+    if with_detail:
+        try:
+            subprocess.run([sys.executable, "../05_推_收集推送/自動詳解.py"],
+                           cwd=Path(__file__).parent)
+        except Exception as e:
+            print(f"自動詳解未完成（不影響分類結果）：{e}")
 
 def main():
     SOURCE_DIR.mkdir(parents=True, exist_ok=True)
