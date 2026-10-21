@@ -7,6 +7,7 @@ __pycache__/
 02_辨_python圖轉文/input_images/*.jpeg
 02_辨_python圖轉文/input_images/*.webp
 錯題拍照上傳_學號 (File responses)/
+錯題分類_表單 (File responses)/
 *.gform
 *.gsheet
 # 學生隱私：照片與個人記憶不進版控
@@ -20,3 +21,7 @@ user_memory.json
 .env
 *.log
 *.err
+# 產生的詳解 HTML（base64 內嵌圖，體積大），可由 05_推_收集推送/錯題本產生器.py 重建
+錯題.html
+已分類/**/*.html
+未分類/**/*.html

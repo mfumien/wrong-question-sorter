@@ -1,0 +1,283 @@
+[
+  {
+    "image_path": "已分類/化學/D化學平衡/螢幕擷取畫面 2026-09-29 110056.png",
+    "subject": "化學",
+    "unit": "D化學平衡",
+    "knowledge": "pH計算",
+    "error_type": "概念不清",
+    "difficulty": "中",
+    "confidence": 0.86,
+    "title": "用酸鹼指示劑變色範圍判斷氫離子濃度大小",
+    "stem": "21. 化學實驗室中有五種酸鹼指示劑，其變色範圍 pH 列於表 3 中。現有甲、乙、丙、丁、戊等五種溶液，小雨想要比較此五種溶液的酸鹼度，於是她在此五種溶液中分別滴入不同的指示劑，所觀察到的顏色如表 4 所示。下列有關溶液中氫離子濃度的比較，何者正確？\n表 3（指示劑／顏色與變色範圍 pH）：甲基橙：紅～黃，3.2～4.4；甲基紅：紅～黃，4.2～6.3；溴瑞香草酚藍：黃～藍，6.0～7.6；酚紅：黃～紅，6.8～8.4；酚酞：無～紅，8.2～10.0\n表 4（溶液／觀察到的顏色）：甲－甲基紅呈紅色；乙－溴瑞香草酚藍呈綠色；丙－甲基橙呈橙色；丁－酚紅呈紅色；戊－酚酞呈無色",
+    "options": [
+      "(A) 甲 > 乙 > 丙",
+      "(B) 甲 > 丁 > 乙",
+      "(C) 甲 > 丁 > 戊",
+      "(D) 乙 > 丙 > 戊",
+      "(E) 丙 > 乙 > 丁"
+    ],
+    "right_options": ["E"],
+    "wrong_options": ["A", "B", "C", "D"],
+    "answer": "(E)",
+    "student_answer": "",
+    "solution": [
+      "步驟1：先讀題的關鍵字。題目問的是「溶液中氫離子濃度 [H+] 的比較」，不是 pH 的大小。由 pH = −log[H+] 可知：pH 越小代表 [H+] 越大（酸性越強），所以 pH 順序與 [H+] 順序恰好相反。",
+      "步驟2：由表 4 的顏色，配合表 3 的變色範圍反推各溶液的 pH 範圍。甲：甲基紅呈紅色 → pH ≤ 4.2（酸）；乙：溴瑞香草酚藍呈綠色 → 6.0 < pH < 7.6（近中性）；丙：甲基橙呈橙色 → 3.2 < pH < 4.4（酸）；丁：酚紅呈紅色 → pH ≥ 8.4（鹼）；戊：酚酞呈無色 → pH < 8.2。",
+      "步驟3：把 pH 換回 [H+]（用 10⁻ᵖᴴ）：丙 約 4×10⁻⁵ ~ 6×10⁻⁴ mol/L；乙 約 2.5×10⁻⁸ ~ 1×10⁻⁶ mol/L；丁 ≤ 4×10⁻⁹ mol/L。因 6×10⁻⁴ > 1×10⁻⁶ 且 2.5×10⁻⁸ > 4×10⁻⁹，故 [H+] 丙 > 乙 > 丁 一定成立。",
+      "步驟4：檢查其他選項。(A)、(D) 都含有「乙 > 丙」，但乙近中性、丙為酸性，實際是 [H+] 乙 < 丙，錯；(B)、(C) 都含有「丁 > 乙」或「丁 > 戊」，但丁用酚紅呈紅色（pH ≥ 8.4）是鹼性最強、[H+] 最小的一杯，錯。",
+      "步驟5：只有 (E)「丙 > 乙 > 丁」正確。"
+    ],
+    "pitfalls": [
+      "最容易錯在把「>」直接當成 pH 比較：題幹問的是「氫離子濃度」，pH 與 [H+] 反向，會因此誤選 (A)。看到「氫離子濃度」就先寫下「pH 越小 → [H+] 越大」。",
+      "指示劑的顏色要對到它自己的變色範圍：甲基橙的「橙色」落在 3.2～4.4 的變色區內；酚酞「無色」代表 pH < 8.2（不是沒 pH 值）；酚紅「紅色」代表 pH ≥ 8.4（不是酸性）。",
+      "甲與丙的 pH 範圍有重疊（3.2～4.2），彼此大小無法確定，所以任何需要比較甲、丙大小的選項都不能選；戊只有 pH < 8.2 的資訊，同樣不足以與其他杯比較。"
+    ],
+    "review_dates": ["T+1｜10-22", "T+3｜10-24", "T+7｜10-28"],
+    "note": "圖上未見學生手寫作答，error_type 依題目特性（pH 與 [H+] 反向關係混淆）判為「概念不清」。本題正解為單選 (E)。"
+  },
+  {
+    "image_path": "已分類/物理/B牛頓力學/螢幕擷取畫面 2026-09-29 110033 - 李福民.png",
+    "subject": "物理",
+    "unit": "B牛頓力學",
+    "knowledge": "摩擦力",
+    "error_type": "概念不清",
+    "difficulty": "中",
+    "confidence": 0.86,
+    "title": "由 v-t 圖比較汽車加速與減速階段的加速度與位移",
+    "stem": "10. 有一部質量為 1000 公斤的汽車由靜止開始，在水平路面朝正東方直線加速至速度為 10 公尺/秒。接著它保持等速度前進，一段時間後因失去動力而減速至停止。若汽車的速度隨時間的變化如圖 4 所示，則下列敘述何者正確？\n圖 4（速度－時間圖）：0～5 秒由 0 斜線上升至 10 公尺/秒；5～10 秒水平維持 10 公尺/秒；10～20 秒斜線下降至 0 公尺/秒。",
+    "options": [
+      "(A) 汽車的加速度量值在減速階段為加速階段的 2 倍",
+      "(B) 減速過程阻力對汽車所作的功為 -5×10⁶ 焦耳",
+      "(C) 汽車的位移在減速階段為加速階段的 2 倍",
+      "(D) 汽車在加速階段的位移為 50 公尺",
+      "(E) 整個過程中汽車的位移為 200 公尺"
+    ],
+    "right_options": ["C"],
+    "wrong_options": ["A", "B", "D", "E"],
+    "answer": "(C)",
+    "student_answer": "",
+    "solution": [
+      "步驟1：認清 v-t 圖的兩條規則——斜率等於加速度（a = Δv/Δt），圖線與時間軸之間的面積等於位移。這題五個選項全都要用到這兩條。",
+      "步驟2：加速階段（0～5 秒）：a = (10 − 0)/5 = 2 公尺/秒²；位移 = 三角形面積 = (1/2)×5×10 = 25 公尺。",
+      "步驟3：等速階段（5～10 秒）：a = 0；位移 = 矩形面積 = 10×5 = 50 公尺。",
+      "步驟4：減速階段（10～20 秒）：a = (0 − 10)/(20 − 10) = −1 公尺/秒²（量值 1 公尺/秒²）；位移 = 三角形面積 = (1/2)×10×10 = 50 公尺。",
+      "步驟5：檢查 (C)：減速段位移 50 公尺 ÷ 加速段位移 25 公尺 = 2 倍，正確。再驗其他選項：(A) 減速加速度量值 1 只有加速段 2 的 1/2，不是 2 倍，錯；(B) 阻力 f = m|a| = 1000 公斤 × 1 公尺/秒² = 1000 牛頓，W = −f·s = −1000×50 = −5×10⁴ 焦耳，指數是 4 不是 6，錯；(D) 加速段位移是 25 公尺，50 公尺是等速段的，錯；(E) 總位移 = 25 + 50 + 50 = 125 公尺，錯。"
+    ],
+    "pitfalls": [
+      "加速階段只有 0～5 秒；5～10 秒是「等速」段（加速度為 0）。把 5～10 秒併進加速段，就會把加速段位移算成 50 公尺而誤選 (D)。",
+      "(B) 的正解是 −5×10⁴ 焦耳（阻力 1000 N × 減速段位移 50 公尺），指數看錯成 6 就掉坑；阻力與位移反向，功必為負值。",
+      "減速段用 10 秒、加速段用 5 秒，所以減速段的「加速度量值」只有加速段的一半（1 : 2），(A) 把比例寫反了；兩段三角形底邊不同、高度相同（都是 10 公尺/秒），所以減速段位移才是加速段的 2 倍。"
+    ],
+    "review_dates": ["T+1｜10-22", "T+3｜10-24", "T+7｜10-28"],
+    "note": "圖上未見學生手寫作答，error_type 依題目特性（v-t 圖斜率與面積對應、段落切分）判為「概念不清」。解 (B) 須用到牛頓第二定律 F = ma 求阻力。已用 python3 核算：a₁=2、a₂=−1、位移 25/50/50 公尺、總位移 125 公尺、W=−5×10⁴ J。"
+  },
+  {
+    "image_path": "已分類/英文/B文法句型/312002_英文_20251001.png",
+    "subject": "英文",
+    "unit": "B文法句型",
+    "knowledge": "分詞構句",
+    "error_type": "概念不清",
+    "difficulty": "易",
+    "confidence": 0.9,
+    "title": "完成式分詞片語 Having finished 作狀語",
+    "stem": "___ finished his homework,\nTom went out to play.",
+    "options": [
+      "A. Having",
+      "B. Have",
+      "C. Has",
+      "D. Had"
+    ],
+    "right_options": ["A"],
+    "wrong_options": ["B", "C", "D"],
+    "answer": "A",
+    "student_answer": "D",
+    "solution": [
+      "步驟1：先看主句 Tom went out to play. 是完整的主詞＋動詞（過去式），所以逗號前的空白不可能是主語，也不是句子的主要動詞。",
+      "步驟2：逗號把空白與主句隔開 → 這是分詞構句，空白處要用「連接詞＋分詞」構成狀語片語，表示「先完成某動作，再做主句的動作」。",
+      "步驟3：這裡強調「已完成作業」才出去玩，所以要用完成式分詞 Having + 過去分詞：Having finished his homework（完成作業後）。",
+      "步驟4：排除其他選項。Have / Has 是原形或三單，不能帶過去分詞 finished；Had finished 是過去完成式的動詞形式（有限動詞），不能像 Having 那樣單獨以片語形式放在逗號前（要表達「已完成已完成的事」應為 Having had finished）。",
+      "步驟5：選 (A) Having，句意為「完成作業後，Tom 就出去玩。」"
+    ],
+    "pitfalls": [
+      "主句是過去式，不代表空白也要用過去式；完成式分詞是 Having + V-ed，不是 Had + V-ed。",
+      "Having finished（完成式分詞）和 Had finished（過去完成式動詞）只差一個字但功能完全不同：Having 可單獨置於句首逗號前作狀語，Had 是限定動詞，不能這樣用。",
+      "判斷時先圈出主句 Tom went out to play.，再問自己「空白是主語、動詞，還是狀語片語」，才能立刻鎖定 Having。"
+    ],
+    "review_dates": ["T+1｜10-22", "T+3｜10-24", "T+7｜10-28"],
+    "note": "學生作答為 D（Had），正解 A。圖上文字「學生作答：D 正解：A」已一併確認。"
+  },
+  {
+    "image_path": "已分類/英文/D閱讀測驗/螢幕擷取畫面 2026-09-29 110329 - 李福民.png",
+    "html_name": "螢幕擷取畫面 2026-09-29 110329 - 李福民-1.html",
+    "subject": "英文",
+    "unit": "D閱讀測驗",
+    "knowledge": "字義猜測",
+    "error_type": "概念不清",
+    "difficulty": "易",
+    "confidence": 0.84,
+    "title": "題組短文：it turns out 插入語的用法",
+    "stem": "11. （第 11 至 15 題為題組）\nFrom the campfire to the café, people have always gathered together to share the latest news. White rhinoceroses, ___ 11 ___, do the same thing—only their choice of meeting place is a giant pile of poop.",
+    "options": [
+      "(A) what is more",
+      "(B) it turns out",
+      "(C) in other words",
+      "(D) all in all"
+    ],
+    "right_options": ["B"],
+    "wrong_options": ["A", "C", "D"],
+    "answer": "B",
+    "student_answer": "",
+    "solution": [
+      "步驟1：看空格的位置——前後都有逗號，是夾在句中的插入語片語，所以選項必須能獨立放在逗號之間。",
+      "步驟2：讀懂後句語意：白犀牛「也做同樣的事（聚在一起分享訊息）」，只是地點換成一大堆糞便。空白處要引出「其實／結果是」這一層轉折提示 → it turns out（結果是，原來如此）。",
+      "步驟3：排除其他選項。(A) what is more（更重要的是）後面要接比較或新增資訊，與後句「do the same thing」接不起來；(C) in other words（換句話說）後面應該是同一件事的改寫說明，但後句是新資訊不是改述；(D) all in all（總的來說）用於總結全文，位置不對。"
+    ],
+    "pitfalls": [
+      "it turns out 是「結果發現、原來如此」，不要誤以為是「turn out to + 原形」那個意思；本題是插入語版本。",
+      "遇到兩側有逗號的空格，先判斷「能不能獨立成句」，這一招可以立刻刷掉 most 選項。",
+      "in other words 後面必須是同義改寫；本文後句是「牠們也做一樣的事」的新訊息，所以不能用 in other words。"
+    ],
+    "review_dates": ["T+1｜10-22", "T+3｜10-24", "T+7｜10-28"],
+    "note": "本圖為第 11～15 題題組共用短文，已拆成 5 筆記錄（-1.html～-5.html）。圖上未見學生手寫作答。"
+  },
+  {
+    "image_path": "已分類/英文/D閱讀測驗/螢幕擷取畫面 2026-09-29 110329 - 李福民.png",
+    "html_name": "螢幕擷取畫面 2026-09-29 110329 - 李福民-2.html",
+    "subject": "英文",
+    "unit": "D閱讀測驗",
+    "knowledge": "字義猜測",
+    "error_type": "概念不清",
+    "difficulty": "易",
+    "confidence": 0.85,
+    "title": "題組短文：rhinos 用糞便 communicate",
+    "stem": "12. A new study indicates that rhinos have a smelly way to ___ 12 ___. Scientists studying white rhinos in South Africa have found that these animals leave messages in their poop.",
+    "options": [
+      "(A) demonstrate",
+      "(B) immigrate",
+      "(C) communicate",
+      "(D) manipulate"
+    ],
+    "right_options": ["C"],
+    "wrong_options": ["A", "B", "D"],
+    "answer": "C",
+    "student_answer": "",
+    "solution": [
+      "步驟1：空格前的 to 後面要接動詞原形，所以先排除非動詞或搭配錯誤的選項。",
+      "步驟2：下一句是解釋句——these animals leave messages in their poop（牠們在糞便中留下訊息），這就是「一種有臭味的交流方式」，所以空格要與 leave messages 意思相接：communicate（溝通、傳遞訊息）。",
+      "步驟3：排除其他選項。demonstrate（示範、證明）不與「留下訊息」搭配；immigrate（移民、移入）與文意無關；manipulate（操縱）文意不符。",
+      "步驟4：全句：A new study indicates that rhinos have a smelly way to communicate.（研究顯示犀牛有一種用來溝通的怪味方式。）"
+    ],
+    "pitfalls": [
+      "先圈出提示詞 leave messages（留下訊息），答案要與「訊息／溝通」同義，不要被 smell（臭）誤導成別的意思。",
+      "to 後面接動詞原形，所以選項須與 to 連讀成立：to demonstrate / to communicate / to manipulate 皆可，但 immigrate（遷徙）在此無語意。",
+      "閱讀題組常「先結論、後解釋」：第 12 題的答案就藏在後一句的說明中，養成先讀下一句的習慣。"
+    ],
+    "review_dates": ["T+1｜10-22", "T+3｜10-24", "T+7｜10-28"],
+    "note": "題組短文第 12 題。圖上未見學生手寫作答。"
+  },
+  {
+    "image_path": "已分類/英文/D閱讀測驗/螢幕擷取畫面 2026-09-29 110329 - 李福民.png",
+    "html_name": "螢幕擷取畫面 2026-09-29 110329 - 李福民-3.html",
+    "subject": "英文",
+    "unit": "D閱讀測驗",
+    "knowledge": "字義猜測",
+    "error_type": "概念不清",
+    "difficulty": "易",
+    "confidence": 0.85,
+    "title": "題組短文：糞便中的化學物質提供線索 clues",
+    "stem": "13. Furthermore, different rhinos leave different chemicals in their poop, which provide important ___ 13 ___ about the age, sex, general health, and reproductive conditions of each specific rhino.",
+    "options": [
+      "(A) doubts",
+      "(B) icons",
+      "(C) matches",
+      "(D) clues"
+    ],
+    "right_options": ["D"],
+    "wrong_options": ["A", "B", "C"],
+    "answer": "D",
+    "student_answer": "",
+    "solution": [
+      "步驟1：抓空格前後的框架：provide important ___ about ...（提供關於……的重要線索）。",
+      "步驟2：後面列出 age, sex, general health, reproductive conditions，都是「判斷一頭犀牛身分的資訊」，也就是「線索、線索索」→ clues（線索、提示）。",
+      "步驟3：排除其他選項。doubts（懷疑）語意相反，文中並非「引起懷疑」；icons（偶像、圖示）語意不符；matches（相符/match、火柴）不能與 provide/about 搭配成「提供關於……的線索」。",
+      "步驟4：全句：...leave different chemicals in their poop, which provide important clues about the age, sex, general health, and reproductive conditions...（留下不同的化學物質，提供關於年齡、性別、健康與生殖狀況的重要線索。）"
+    ],
+    "pitfalls": [
+      "provide clues about ... 是固定用法，「線索」在此是抽象的「資訊、判斷依據」，不要誤以為只是「線索球」。",
+      "後面的名詞串（年齡、性別、健康、生殖狀況）就是「這些化學物質能告訴我們什麼」，答案要能當「提供……的線索」的主題。",
+      "doubts 放在 important 後面變成「重要的懷疑」語意不通，遇到與後文明顯衝突的選項（這裡 doubt 與 confident 相反）要立刻刪除。"
+    ],
+    "review_dates": ["T+1｜10-22", "T+3｜10-24", "T+7｜10-28"],
+    "note": "題組短文第 13 題。圖上未見學生手寫作答。"
+  },
+  {
+    "image_path": "已分類/英文/D閱讀測驗/螢幕擷取畫面 2026-09-29 110329 - 李福民.png",
+    "html_name": "螢幕擷取畫面 2026-09-29 110329 - 李福民-4.html",
+    "subject": "英文",
+    "unit": "D閱讀測驗",
+    "knowledge": "主旨推論",
+    "error_type": "解題策略錯",
+    "difficulty": "中",
+    "confidence": 0.82,
+    "title": "題組短文：由和平和諧推論較不可能打架",
+    "stem": "14. This is of great significance for the peace and harmony in the group. When all members in a group know what's going on with each other, it is ___ 14 ___ that they will fight.",
+    "options": [
+      "(A) hardly surprising",
+      "(B) more acceptable",
+      "(C) truly important",
+      "(D) less likely"
+    ],
+    "right_options": ["D"],
+    "wrong_options": ["A", "B", "C"],
+    "answer": "D",
+    "student_answer": "",
+    "solution": [
+      "步驟1：認出句型 it is + 形容词 + that 子句（it 作形式主語），選項必須能接 that they will fight。",
+      "步驟2：回推前文：知道彼此狀況 → 對群體的和平與和諧（peace and harmony）有重大意義。因此推論：大家都了解彼此狀況時，打架的「可能性」會降低。",
+      "步驟3：選出 it is less likely that they will fight（他們較不可能打架），答案 (D)。",
+      "步驟4：排除其他選項。(A) hardly surprising（幾乎不令人驚訝）——文中沒有「出乎意料」的對比基準；(B) more acceptable（更可接受）——沒有「可接受度」的比較對象；(C) truly important（真的很重要）——雖與前句「significant」字面相近，但原句 already 說過 important，重複且邏輯不通。"
+    ],
+    "pitfalls": [
+      "看到前句有 important 就直接選 truly important，是最常見的失分點；這裡前句已經把 importance 講完，第 14 題要的是「因為知道彼此狀況，所以打架的機率降低」這個因果推論。",
+      "it is + adj. + that 子句：adj. 必須能描述 that 子句所說的情形，「less likely that they will fight」才講得通。",
+      "推論題要寫出「前句的哪個訊息支持選項」：peace and harmony → less likely to fight，抓住這組因果即可秒答。"
+    ],
+    "review_dates": ["T+1｜10-22", "T+3｜10-24", "T+7｜10-28"],
+    "note": "題組短文第 14 題，屬推論題。圖上未見學生手寫作答。"
+  },
+  {
+    "image_path": "已分類/英文/D閱讀測驗/螢幕擷取畫面 2026-09-29 110329 - 李福民.png",
+    "html_name": "螢幕擷取畫面 2026-09-29 110329 - 李福民-5.html",
+    "subject": "英文",
+    "unit": "D閱讀測驗",
+    "knowledge": "細節定位",
+    "error_type": "概念不清",
+    "difficulty": "中",
+    "confidence": 0.82,
+    "title": "題組短文：雄性犀牛對假糞反應明顯 responsive to",
+    "stem": "15. The researchers have even made \"fake poop\" to see how different rhinos would react. They find that dominant males are particularly ___ 15 ___ the \"fake poop\" that carries chemicals from females ready to mate. The males sniff it for longer duration and come back to the same spot more frequently, a clear sign that they are gathering information about mating opportunities from the poop.",
+    "options": [
+      "(A) responsive to",
+      "(B) annoyed at",
+      "(C) considerate of",
+      "(D) tolerant with"
+    ],
+    "right_options": ["A"],
+    "wrong_options": ["B", "C", "D"],
+    "answer": "A",
+    "student_answer": "",
+    "solution": [
+      "步驟1：定位細節——空格後的同位語 the \"fake poop\" 帶有雌性發情期的化學訊號；下一句 The males sniff it for longer duration and come back to the same spot more frequently 是描述雄性對它的反應強度（嗅更久、回來更勤）。",
+      "步驟2：因此空格要表達「對……反應明顯、有回應」→ responsive to（對……反應靈敏的）。",
+      "步驟3：排除其他選項。(B) annoyed at（對……感到惱怒）文中沒有惱怒的語意；(C) considerate of（對……體貼、顧慮）與觀察到的行為不符；(D) tolerant with（容忍）語意正好相反——這裡是「非常在意」，不是「容忍」。",
+      "步驟4：全句：dominant males are particularly responsive to the \"fake poop\"...（優勢雄性對假糞特別有反應。）"
+    ],
+    "pitfalls": [
+      "要用後一句的具體細節（sniff it for longer duration、come back more frequently）來佐證選項，不能只憑前半句「react」就隨便選。",
+      "be responsive to / be annoyed at / be considerate of / be tolerant with 這組片語意思差很多，尤其 tolerant with（容忍）與 responsive to（有反應）方向相反，最容易誤選。",
+      "particularly 提示「特別、格外」，選項要能表達「程度上的強烈反應」，responsive to 最合適。"
+    ],
+    "review_dates": ["T+1｜10-22", "T+3｜10-24", "T+7｜10-28"],
+    "note": "題組短文第 15 題。圖上未見學生手寫作答。"
+  }
+]
